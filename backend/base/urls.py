@@ -1,6 +1,8 @@
 from django.urls import path
-from . import views
+from .views import user_views
+from .views.user_views import MyTokenObtainPairView
 
 urlpatterns = [
-    path('', views.getHomePage, name='home'),
+    path('info/', user_views.getGeneralInfo, name='GeneralInfo'),
+    path('token/', MyTokenObtainPairView.as_view(), name='token_obtain_pair'),
 ]
