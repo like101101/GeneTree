@@ -13,10 +13,10 @@ function LoginScreen() {
           >
             Create Account
           </h1>
-          <h5 className="card-subtitle text-muted  mt-3">
+          <h6 className="card-subtitle text-muted  mt-3">
             Welcome to GeneTree! Please enter your information below to create
             an account.
-          </h5>
+          </h6>
           <Form>
             <Row>
               <Col>

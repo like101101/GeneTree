@@ -1,15 +1,11 @@
 import React from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
-import { LinkContainer } from "react-router-bootstrap";
 
 function Header() {
-
-
   return (
     <Navbar bg="bg-light" className="navbar-light">
       <Container>
-        <LinkContainer to="/">
-          <Navbar.Brand>
+          <Navbar.Brand href="/">
             <img
               alt=""
               src="/favicon.ico"
@@ -19,23 +15,9 @@ function Header() {
             />{" "}
             GeneTree
           </Navbar.Brand>
-        </LinkContainer>
         <Nav className="me-auto">
-          <LinkContainer to="/services" >
-            <Nav.Link>
-                | Services
-            </Nav.Link>
-          </LinkContainer>
-          <LinkContainer to="/aboutus" >
-            <Nav.Link>
-                | About Us
-            </Nav.Link>
-          </LinkContainer>
-          <LinkContainer to="/faqs" >
-            <Nav.Link>
-                | FAQs
-            </Nav.Link>
-          </LinkContainer>
+            <Nav.Link href="/">Home</Nav.Link>
+            <Nav.Link href="/about">| About Us</Nav.Link>
         </Nav>
       </Container>
     </Navbar>
