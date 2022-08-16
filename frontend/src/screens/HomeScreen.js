@@ -1,9 +1,10 @@
 import React from 'react'
-import { Container ,Row, Col} from 'react-bootstrap'
+import { Container ,Row, Col, Button} from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
+import FormContainer from '../components/FormContainer'
 function HomeScreen() {
   return (
-    <Container>
+    <FormContainer>
         <Container className="card">
           <Container className="card-body" style={{ "textAlign": "center" }}>
           <h1
@@ -12,43 +13,58 @@ function HomeScreen() {
           >
             I am a
           </h1>
-          <Row className='mt-5'>
+          <Row>
             <Col>
-              <LinkContainer to="/patient/login" className="card" style={{"marginLeft":"60px", "backgroundColor":"#EBF4FF"}}>
+              <LinkContainer to="/patient/register" className="card" style={{"alignItems":"center", "backgroundColor":"#EBF4FF", "margin":"10px"}}>
                 <div>
+                  <br></br>
+                  <div style={{"marginBottom":"50px"}}></div>
                   <img
                   alt="" 
                   src="/patient_icon.png"
-                  width="500"
-                  height="500">
-                    
+                  width="250"
+                  height="250"
+                  style={{"marginBottom":"40px"}}
+                  >
                   </img>
-                  <h4 style={{ "fontSize": "50px", "fontFamily": "Poppins" , "color": "#2196f3"}}>
-                    Patient
-                  </h4>
+                  <div className="card" style={{"marginBottom":"50px"}}>
+                    <h5 style={{ "fontSize": "40px", "fontFamily": "Poppins" , "color": "#2196f3", "margin":"30px"}}>
+                      Patient 
+                    </h5>
+                  </div>
                 </div>
               </LinkContainer>
             </Col>
             <Col>
-              <LinkContainer to="/physician/login" className="card" style={{"marginRight":"40px" , "backgroundColor":"#EBF4FF"}}>
+              <LinkContainer to="/physician/login" className="card"  style={{"alignItems":"center", "backgroundColor":"#EBF4FF", "margin":"10px"}}>
               <div>
+              <br></br>
+                  <div style={{"marginBottom":"40px"}}></div>
                   <img
                   alt="" 
                   src="/physician_icon.png"
-                  width="500"
-                  height="500">
+                  width="250"
+                  height="250"
+                  style={{"marginBottom":"50px"}}>
                   </img>
-                  <h4 style={{ "fontSize": "50px", "fontFamily": "Poppins" , "color": "#2196f3"}}>
-                    Physician
-                  </h4>
+                  <div className="card" style={{"marginBottom":"50px"}}>
+                    <h5 style={{ "fontSize": "40px", "fontFamily": "Poppins" , "color": "#2196f3", "margin":"30px"}}>
+                      Physician
+                    </h5>
+                  </div>
                 </div>
               </LinkContainer>
             </Col>
           </Row>
-          </Container>
+          <hr style={{"border":"solid 1px"}}></hr>
+          <div style={{"marginTop":"50px"}}></div>
 
+          <LinkContainer to="/login">
+            <Button>Login</Button>
+          </LinkContainer>
+          </Container>
         </Container>
-    </Container>
+    </FormContainer>
   )
 }
 

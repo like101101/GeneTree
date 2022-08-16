@@ -1,15 +1,15 @@
 import React from "react";
 import { Container, Form, Row, Col, Button } from "react-bootstrap";
-import FormContainer from "../components/FormContainer";
+import FormContainer from "../../components/FormContainer";
 
-function LoginScreen() {
+function PatientRegisterScreen() {
   return (
     <FormContainer>
       <Container className="card">
-        <Container className="card-body" style={{ "text-align": "center" }}>
+        <Container className="card-body" style={{ "textAlign": "center" }}>
           <h1
             className="card-title mt-3"
-            style={{ "font-size": "60px", "font-family": "Poppins" }}
+            style={{ "fontSize": "60px", "fontFamily": "Poppins" }}
           >
             Create Account
           </h1>
@@ -27,7 +27,7 @@ function LoginScreen() {
                 >
                   <Form.Label
                     className="form-label"
-                    style={{ "text-align": "left" }}
+                    style={{ "textAlign": "left" }}
                   >
                     First Name
                   </Form.Label>
@@ -44,7 +44,7 @@ function LoginScreen() {
                 >
                   <Form.Label
                     className="form-label"
-                    style={{ "text-align": "left" }}
+                    style={{ "textAlign": "left" }}
                   >
                     Middle Name
                   </Form.Label>
@@ -61,7 +61,7 @@ function LoginScreen() {
                 >
                   <Form.Label
                     className="form-label"
-                    style={{ "text-align": "left" }}
+                    style={{ "textAlign": "left" }}
                   >
                     Last Name
                   </Form.Label>
@@ -80,7 +80,7 @@ function LoginScreen() {
                 >
                   <Form.Label
                     className="form-label"
-                    style={{ "text-align": "left" }}
+                    style={{ "textAlign": "left" }}
                   >
                     Email
                   </Form.Label>
@@ -97,7 +97,7 @@ function LoginScreen() {
                 >
                   <Form.Label
                     className="form-label"
-                    style={{ "text-align": "left" }}
+                    style={{ "textAlign": "left" }}
                   >
                     Verify Email
                   </Form.Label>
@@ -114,7 +114,7 @@ function LoginScreen() {
                 >
                   <Form.Label
                     className="form-label"
-                    style={{ "text-align": "left" }}
+                    style={{ "textAlign": "left" }}
                   >
                     Phone Number
                   </Form.Label>
@@ -133,7 +133,7 @@ function LoginScreen() {
                 >
                   <Form.Label
                     className="form-label"
-                    style={{ "text-align": "left" }}
+                    style={{ "textAlign": "left" }}
                   >
                     Date of Birth
                   </Form.Label>
@@ -150,7 +150,7 @@ function LoginScreen() {
                 >
                   <Form.Label
                     className="form-label"
-                    style={{ "text-align": "left" }}
+                    style={{ "textAlign": "left" }}
                   >
                     Family Code
                   </Form.Label>
@@ -167,7 +167,7 @@ function LoginScreen() {
                 >
                   <Form.Label
                     className="form-label"
-                    style={{ "text-align": "left" }}
+                    style={{ "textAlign": "left" }}
                   >
                     Physician Code
                   </Form.Label>
@@ -186,7 +186,7 @@ function LoginScreen() {
                 >
                   <Form.Label
                     className="form-label"
-                    style={{ "text-align": "left" }}
+                    style={{ "textAlign": "left" }}
                   >
                     Last 4 Digits of SSN
                   </Form.Label>
@@ -210,4 +210,4 @@ function LoginScreen() {
   );
 }
 
-export default LoginScreen;
+export default PatientRegisterScreen;
