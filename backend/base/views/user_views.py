@@ -1,9 +1,7 @@
-from django.shortcuts import render
 from django.http import JsonResponse
 from ..models import AdditionalInfo
-from django.contrib.auth.models import User
 from rest_framework.decorators import api_view
-from ..serializers import PatientInfoSerializer, PhysicianInfoSerializer, GeneralInfoSerializer
+from ..serializers import GeneralInfoSerializer
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
 from base.serializers import UserSerializerWithToken

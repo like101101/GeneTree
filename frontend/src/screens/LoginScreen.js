@@ -1,17 +1,33 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import { Form, Button, Row, Col, Container } from "react-bootstrap";
-import { useLocation } from "react-router-dom";
 import FormContainer from "../components/FormContainer";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import Loader from "../components/Loader";
+import Message from "../components/Message";
+import { login } from "../actions/userActions";
+import { useLocation, useNavigate } from "react-router-dom";
 
 function LoginScreen() {
-  const location = useLocation();
-  const [email, setEmail] = React.useState("");
-  const [password, setPassword] = React.useState("");
-  const redirect = location.search ? location.search.split("=")[1] : "/";
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const location = useLocation()
+  const navigate = useNavigate();
+  const dispatch = useDispatch()
+  const redirect = location.search ? location.search.split('=')[1] : '/'
+
+  const userLogin = useSelector(state => state.userLogin)
+  const {error, loading, userInfo} = userLogin
+  
+  useEffect(() => {
+    if(userInfo){
+        navigate(redirect)
+    }
+  }, [navigate, userInfo, redirect])
 
   const submitHandler = (e) => {
-    console.log("Form Submitted");
+    e.preventDefault();
+    dispatch(login(email, password))
   };
 
   return (
@@ -120,7 +136,7 @@ function LoginScreen() {
               </Container>
             </Col>
             <Col>
-              <Link to={redirect ? `/?redirect=${redirect}` : "/"}>
+              <Link to={redirect ? `/register?redirect=${redirect}` : "/register"}>
                 New User?
               </Link>
             </Col>
