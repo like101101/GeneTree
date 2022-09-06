@@ -40,6 +40,8 @@ export const login = (email, password) => async (dispatch) => {
       payload: data,
     });
 
+    dispatch(get_register_info())
+
     localStorage.setItem("userInfo", JSON.stringify(data));
 
   } catch (error) {
@@ -53,8 +55,11 @@ export const login = (email, password) => async (dispatch) => {
   }
 };
 
+
+
 export const logout = () => (dispatch) => {
   localStorage.removeItem("userInfo");
+  localStorage.removeItem("userRegister");
   dispatch({
     type: USER_LOGOUT,
     payload: [],
@@ -87,13 +92,11 @@ export const register = (name, email, password, registerInfo) => async (dispatch
       payload: user,
     });
 
-    console.log(register);
     dispatch({
       type: USER_REGISTER_SUCCESS,
       payload: register,
     });
     
-    console.log(data)
 
 
   } catch (error) {
@@ -107,6 +110,37 @@ export const register = (name, email, password, registerInfo) => async (dispatch
   }
 };
 
+export const get_register_info = () => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: USER_REGISTER_REQUEST,
+    });
+
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    const { data } = await axios.get(`/api/users/registerinfo`, {
+      headers: {
+        "Content-type": "application/json",
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    });
+
+    dispatch({
+      type: USER_REGISTER_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: USER_REGISTER_FAIL,
+      payload:
+        error.response && error.response.data.detail
+          ? error.response.data.detail
+          : error.message,
+    });
+  }
+};
 
 export const getUserDetails = (id) => async (dispatch, getState) => {
   try {

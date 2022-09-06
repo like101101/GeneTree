@@ -3,8 +3,6 @@ import { Form, Button, Row, Col, Container } from "react-bootstrap";
 import FormContainer from "../components/FormContainer";
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Loader from "../components/Loader";
-import Message from "../components/Message";
 import { login } from "../actions/userActions";
 import { useLocation, useNavigate } from "react-router-dom";
 
@@ -15,15 +13,18 @@ function LoginScreen() {
   const navigate = useNavigate();
   const dispatch = useDispatch()
   const redirect = location.search ? location.search.split('=')[1] : '/'
-
-  const userLogin = useSelector(state => state.userLogin)
-  const {error, loading, userInfo} = userLogin
+  const userRegister = useSelector(state => state.userRegister)
+  const { registerInfo } = userRegister
   
   useEffect(() => {
-    if(userInfo){
-        navigate(redirect)
+    if(registerInfo){
+      if(registerInfo.type === "patient"){
+        navigate('/patient/')
+      }else if(registerInfo.type === "physician"){
+        navigate('/physician/')
+      }
     }
-  }, [navigate, userInfo, redirect])
+  }, [navigate, registerInfo, redirect])
 
   const submitHandler = (e) => {
     e.preventDefault();

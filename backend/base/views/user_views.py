@@ -27,13 +27,12 @@ class MyTokenObtainPairView(TokenObtainPairView):
 
 
 # Create your views here.
-def getHomePage(request):
-    return JsonResponse("HomePage for APIs, welcome!", safe=False)
-
 @api_view(['GET'])
+@permission_classes([IsAuthenticated])
 def getRegisterInfo(request):
-    infos = RegisterInfo.objects.all()
-    serializer = RegisterInfoSerializer(infos, many=True)
+    user = request.user
+    infos = RegisterInfo.objects.get(user=user)
+    serializer = RegisterInfoSerializer(infos, many=False)
     return JsonResponse(serializer.data, safe=False)
 
 @api_view(['POST'])
