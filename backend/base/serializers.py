@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import AdditionalInfo
+from .models import RegisterInfo
 from django.contrib.auth.models import User
 from rest_framework_simplejwt.tokens import RefreshToken
 
@@ -39,20 +39,7 @@ class UserSerializerWithToken(UserSerializer):
         token = RefreshToken.for_user(obj)
         return str(token.access_token)
 
-
-
-
-class PatientInfoSerializer(serializers.ModelSerializer):
+class RegisterInfoSerializer(serializers.ModelSerializer):
     class Meta:
-        model = AdditionalInfo
-        fields = ['id', 'type', 'medical_history', 'image']
-
-class PhysicianInfoSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = AdditionalInfo
-        fields = ['id', 'type', 'introduction', 'image']
-
-class GeneralInfoSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = AdditionalInfo
+        model = RegisterInfo
         fields = '__all__'

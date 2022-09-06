@@ -1,5 +1,5 @@
 from django.contrib import admin
-from.models import AdditionalInfo
+from.models import RegisterInfo
 # Register your models here.
 
-admin.site.register(AdditionalInfo)
+admin.site.register(RegisterInfo)
