@@ -7,6 +7,10 @@ import HomeScreen from "./screens/HomeScreen";
 import LoginScreen from './screens/LoginScreen';
 import RegisterScreem from "./screens/RegisterScreen";
 import PatientHomeScreen from "./screens/patient/PatientHomeScreen";
+import PhysicianHomeScreen from "./screens/physician/PhysicianHomeScreen";
+import PhysicianRegisterScreen from "./screens/physician/PhysicianRegisterScreen";
+import PatientProfileScreen from "./screens/patient/PatientProfileScreen";
+
 
 function App() {
   return (
@@ -19,7 +23,10 @@ function App() {
             <Route path='/login' element={<LoginScreen />} />
             <Route path='/register' element={<RegisterScreem />} />
             <Route path='/register/patient' element={<PatientRegisterScreen />} />
+            <Route path='/register/physician' element={<PhysicianRegisterScreen />} />
             <Route path='/patient' element={<PatientHomeScreen />} />
+            <Route path='/patient/profile' element={<PatientProfileScreen />} />
+            <Route path='/physician' element={<PhysicianHomeScreen />} />
           </Routes>
         </Container>
       </main>

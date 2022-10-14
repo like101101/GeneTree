@@ -2,7 +2,7 @@ import React from "react";
 import { Container, Form, Row, Col, Button } from "react-bootstrap";
 import FormContainer from "../../components/FormContainer";
 
-function LoginScreen() {
+function PhysicianRegisterScreen() {
   return (
     <FormContainer>
       <Container className="card">
@@ -210,4 +210,4 @@ function LoginScreen() {
   );
 }
 
-export default LoginScreen;
+export default PhysicianRegisterScreen;

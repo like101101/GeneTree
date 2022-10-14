@@ -7,6 +7,8 @@ import { logout } from '../actions/userActions'
 function Header() {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
+  const userRegister = useSelector((state) => state.userRegister);
+  const { registerInfo } = userRegister;
 
   const dispatch = useDispatch();
 
@@ -15,6 +17,7 @@ function Header() {
   };
 
   const hi = userInfo ? "Hi, " + userInfo.name : 'Guest';
+  const profileURL = registerInfo ? "/" + registerInfo.type + "/profile/" : "/login";
 
   return (
     <Navbar bg="bg-light" className="navbar-light">
@@ -37,7 +40,7 @@ function Header() {
         <Navbar.Collapse className="justify-content-end">
           {userInfo ? (
             <NavDropdown title={hi} id="username">
-              <LinkContainer to="/profile">
+              <LinkContainer to={profileURL}>
                 <NavDropdown.Item>Profile</NavDropdown.Item>
               </LinkContainer>
 

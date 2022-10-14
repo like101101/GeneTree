@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-
 function PatientHomeScreen() {
     const navigate = useNavigate()
     const userRegister = useSelector(state => state.userRegister)
@@ -14,7 +13,7 @@ function PatientHomeScreen() {
         }
     }, [navigate, registerInfo])
     return (
-        <div>Patient HomeScreen</div>
+        <div>Physician HomeScreen</div>
     )
 }
 

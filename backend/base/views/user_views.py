@@ -1,7 +1,7 @@
 from django.http import JsonResponse
 from ..models import RegisterInfo
 from rest_framework.decorators import api_view, permission_classes
-from ..serializers import RegisterInfoSerializer
+from ..serializers import RegisterInfoSerializer, RegisterInfoSerializer, ProfileSerializer, MedicalRecordSerializer
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
 from base.serializers import UserSerializerWithToken
@@ -61,3 +61,19 @@ def register_user(request):
     except Exception as e:
         message = {'detail': 'Woops, something went wrong!'}
         return Response(message, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['GET'])
+def get_profile_by_user(request):
+    user = request.user
+    profile = user.profile
+    serializer = ProfileSerializer(profile, many=False)
+    return JsonResponse(serializer.data, safe=False)
+
+
+@api_view(['GET'])
+def get_medical_records_by_user(request):
+    user = request.user
+    medical_records = user.medicalrecord_set.all()
+    serializer = MedicalRecordSerializer(medical_records, many=True)
+    return JsonResponse(serializer.data, safe=False)

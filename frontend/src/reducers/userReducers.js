@@ -17,7 +17,19 @@ import {
     USER_UPDATE_PROFILE_RESET,
     USER_UPDATE_PROFILE_SUCCESS,
     USER_DETAILS_RESET,
+
+    USER_PROFILE_FAIL,
+    USER_PROFILE_REQUEST,
+    USER_PROFILE_RESET,
+    USER_PROFILE_SUCCESS,
 } from '../constants/userConstants'
+
+import {
+    RECORD_ALL_FAIL,
+    RECORD_ALL_REQUEST,
+    RECORD_ALL_RESET,
+    RECORD_ALL_SUCCESS,
+} from '../constants/recordConstants'
 
 export const userLoginReducer = (state = {}, action) => {
     switch(action.type){
@@ -65,6 +77,37 @@ export const userDetailsReducer = (state = {}, action) => {
             return state
     }
 }
+
+export const userProfileReducer = (state = {}, action) => {
+    switch(action.type){
+        case USER_PROFILE_REQUEST:
+            return { loading:true }
+        case USER_PROFILE_SUCCESS:
+            return {loading:false, success: true, profile: action.payload}
+        case USER_PROFILE_FAIL:
+            return {loading:false, success: false, error: action.payload}
+        case USER_PROFILE_RESET:
+            return {}
+
+        default:
+            return state
+    }
+}
+
+export const userRecordAllReducer = (state = {}, action) => {
+    switch(action.type){
+        case RECORD_ALL_REQUEST:
+            return { loading:true }
+        case RECORD_ALL_SUCCESS:
+            return {loading:false, success: true, records: action.payload}
+        case RECORD_ALL_FAIL:
+            return {loading:false, success: false, error: action.payload}
+        case RECORD_ALL_RESET:
+            return {}
+        default:
+            return state
+    }
+}  
 
 export const userUpdateProfileReducer = (state = {}, action) => {
     switch(action.type){
