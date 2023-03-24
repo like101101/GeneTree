@@ -38,7 +38,7 @@ const userRecordFromStorage = localStorage.getItem('userRecord') ?
 
 const initialState = {
     userLogin: {userInfo: userInfoFromStorage},
-    userRegister: {userRegister: userRegisterFromStorage},
+    userRegister: {registerInfo: userRegisterFromStorage},
     userProfile: {profile: userProfileFromStorage},
     userRecord: {records: userRecordFromStorage},
 }

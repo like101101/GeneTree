@@ -9,4 +9,5 @@ urlpatterns = [
     path('registerinfo/', user_views.getRegisterInfo, name='register-info'),
     path('profile/', user_views.get_profile_by_user, name='profile'),
     path('records/', user_views.get_medical_records_by_user, name='records'),
+    path('records/update/', user_views.update_visibility, name='update-visibility'),
 ]

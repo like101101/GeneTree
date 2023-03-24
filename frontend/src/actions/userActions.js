@@ -78,6 +78,12 @@ export const logout = () => (dispatch) => {
   dispatch({
     type: USER_DETAILS_RESET,
   });
+  dispatch({
+    type: USER_PROFILE_RESET,
+  });
+  dispatch({
+    type: RECORD_ALL_RESET,
+  }); 
 };
 
 export const register =
@@ -212,19 +218,8 @@ export const update_user_profile = (user) => async (dispatch, getState) => {
       payload: data,
     });
 
-    dispatch({
-      type: USER_LOGIN_SUCCESS,
-      payload: data,
-    });
 
-    swal({
-      title: "Your profile has been updated",
-      text: "You clicked the button!",
-      icon: "success",
-      button: "OK",
-    });
-
-    localStorage.setItem("userInfo", JSON.stringify(data));
+    localStorage.setItem("userProfile", JSON.stringify(data));
   } catch (error) {
     dispatch({
       type: USER_UPDATE_PROFILE_FAIL,
@@ -297,6 +292,37 @@ export const get_user_records = () => async (dispatch, getState) => {
   } catch (error) {
     dispatch({
       type: RECORD_ALL_FAIL,
+      payload:
+        error.response && error.response.data.detail
+          ? error.response.data.detail
+          : error.message,
+    });
+  }
+};
+
+export const update_visibility = (records) => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: USER_UPDATE_PROFILE_REQUEST,
+    });
+
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    const { data } = await axios.put(`/api/users/records/update/`, records, {
+      headers: {
+        "Content-type": "application/json",
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    });
+
+
+    localStorage.setItem("userRecord", JSON.stringify(data));
+
+  } catch (error) {
+    dispatch({
+      type: USER_UPDATE_PROFILE_FAIL,
       payload:
         error.response && error.response.data.detail
           ? error.response.data.detail

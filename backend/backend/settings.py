@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     'base.apps.BaseConfig',
     'rest_framework',
     "corsheaders"
-
 ]
 
 REST_FRAMEWORK = {

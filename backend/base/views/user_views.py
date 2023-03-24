@@ -1,5 +1,5 @@
 from django.http import JsonResponse
-from ..models import RegisterInfo
+from ..models import RegisterInfo, MedicalRecord, Profile
 from rest_framework.decorators import api_view, permission_classes
 from ..serializers import RegisterInfoSerializer, RegisterInfoSerializer, ProfileSerializer, MedicalRecordSerializer
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
@@ -77,3 +77,15 @@ def get_medical_records_by_user(request):
     medical_records = user.medicalrecord_set.all()
     serializer = MedicalRecordSerializer(medical_records, many=True)
     return JsonResponse(serializer.data, safe=False)
+
+
+@api_view(['PUT'])
+@permission_classes([IsAuthenticated])
+def update_visibility(request):
+    for request_record in request.data['records']:
+        record = MedicalRecord.objects.get(id=request_record['id'])
+        record.show = request_record['show']
+        record.save()
+
+    return Response(request.data['records'], status=status.HTTP_200_OK)
+

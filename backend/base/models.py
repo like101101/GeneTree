@@ -23,6 +23,7 @@ class MedicalRecord(models.Model):
     date = models.DateField(null=False)
     symptoms = models.CharField(max_length=100, null=True)
     medications = models.CharField(max_length=100, null=True)
+    show = models.BooleanField(default=False)
     def __str__(self):
         return self.user.username + " " + self.disorder
 
